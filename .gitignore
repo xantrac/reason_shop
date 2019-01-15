@@ -40,3 +40,10 @@ npm-debug.log
 # secrets files as long as you replace their contents by environment
 # variables.
 /config/*.secret.exs
+/assets/.merlin
+/.DS_Store
+/assets/.bsb.lock
+/assets/npm-debug.log
+/assets/lib/
+.elixir_ls
+node_modules
