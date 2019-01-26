@@ -1,8 +1,10 @@
 defmodule ReasonShopWeb.UserSocket do
   use Phoenix.Socket
 
+  
   ## Channels
   # channel "room:*", ReasonShopWeb.RoomChannel
+  channel "main", ReasonShopWeb.MainChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
