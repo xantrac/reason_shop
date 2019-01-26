@@ -50,10 +50,12 @@ defmodule ReasonShop.Resources do
   defp purchase_create_changeset(%Purchase{} = purchase, attrs) do
     purchase
     |> cast(attrs, [:customer_id, :product_id, :state])
+    |> validate_inclusion(:state, ["Ordered", "Shipped", "Delivered"])
   end
 
   defp purchase_update_changeset(%Purchase{} = purchase, attrs) do
     purchase
     |> cast(attrs, [:state])
+    |> validate_inclusion(:state, ["Ordered", "Shipped", "Delivered"])
   end
 end
