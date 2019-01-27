@@ -1,6 +1,6 @@
 defmodule ReasonShopWeb.MainChannel do
   use ReasonShopWeb, :channel
-  alias PoolPartyWeb.{ProductView, CustomerView, PurchaseView, ChangesetView, ErrorView, Endpoint}
+  alias ReasonShopWeb.{ProductsView, CustomersView, PurchasesView, ChangesetView, ErrorView, Endpoint}
   alias ReasonShop.Resources
   alias ReasonShop.{Product, Customer, Purchase}
   alias Phoenix.{View, Socket}
@@ -14,9 +14,9 @@ defmodule ReasonShopWeb.MainChannel do
 
     data =
     %{}
-    |> Map.merge(View.render(CustomerView, "customers.json", %{customers: customers}))
-    |> Map.merge(View.render(ProductView, "products.json", %{products: products}))
-    {:ok, %{data: "hello"}, socket}
+    |> Map.merge(View.render(CustomersView, "customers.json", %{customers: customers}))
+    |> Map.merge(View.render(ProductsView, "products.json", %{products: products}))
+    {:ok, %{data: data}, socket}
   end
 
 end

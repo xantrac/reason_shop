@@ -26,13 +26,31 @@ module CreateChannel = (WS: WebSocketInterface) => {
     getOrInit(mySocket, () => WS.initSocket("/socket") |> WS.connectSocket);
 
   let getChannel = (): WS.Channel.t =>
-    getOrInit(myChannel, () => getSocket() |> WS.initChannel("infinity"));
+    getOrInit(myChannel, () => getSocket() |> WS.initChannel("main"));
 
   let getJoinEvent = (): WS.Push.t =>
     getOrInit(myJoinEvent, () => getChannel() |> WS.joinChannel);
 
   let sendPush = (event: string, payload: Js.t('a)): WS.Push.t =>
     WS.push(event, payload, getChannel());
+
+  let onJoin = (): Repromise.t(Belt.Result.t(InitialState.t, string)) => {
+    let (promise, resolve_promise) = Repromise.make();
+
+    getJoinEvent()
+    |> WS.putReceive("ok", response =>
+         response
+         |> Json.toBeltResult(JoinEvent.jsonDecodeExn)
+         |> Belt.Result.map(_, resp => resp.data)
+         |> resolve_promise
+       )
+    |> WS.putReceive("error", _errorJson =>
+         Belt.Result.Error("Failed Join event") |> resolve_promise
+       )
+    |> ignore;
+
+    promise;
+  };
 };
 
 module ShopChannel = CreateChannel(Phx);

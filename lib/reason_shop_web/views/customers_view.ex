@@ -1,6 +1,6 @@
-defmodule ReasonShop.CustomersView do
+defmodule ReasonShopWeb.CustomersView do
   use ReasonShopWeb, :view
-  alias ReasonShop.CustomersView
+  alias ReasonShopWeb.CustomersView
 
   def render("customers.json", %{customers: customers}) do
     %{customers: render_many(customers, CustomersView, "customer.json", as: :customer)}
