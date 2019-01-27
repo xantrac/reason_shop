@@ -1,3 +1,4 @@
+
 let component = ReasonReact.statelessComponent("Component1");
 
 let handleClick = (_event, _self) => Js.log("clicked!");

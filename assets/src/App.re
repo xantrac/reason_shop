@@ -41,10 +41,7 @@ let make = _children => {
   didMount: self => {
     ShopChannel.onJoin() |> Repromise.wait(joinEventHandler(self));
   },
-  render: _self => {
-    <div>
-      <Component1 message="HELLO" />
-      <Component2 greeting="HELLO" />
-    </div>;
+  render: self => {
+    <div> <CustomersList customers={self.state.customers} /> </div>;
   },
 };
