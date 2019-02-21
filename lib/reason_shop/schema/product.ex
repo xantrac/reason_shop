@@ -4,10 +4,8 @@ defmodule ReasonShop.Product do
 
 
   schema "products" do
-    field :brand, :string
-    field :price, :integer
-    field :size, :string
-    field :type, :string
+    field :name, :string
+    field :price, :float
 
     timestamps()
   end
@@ -15,7 +13,7 @@ defmodule ReasonShop.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:type, :brand, :size, :price])
-    |> validate_required([:type, :brand, :size, :price])
+    |> cast(attrs, [:name, :price])
+    |> validate_required([:name, :price])
   end
 end

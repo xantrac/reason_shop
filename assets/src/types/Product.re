@@ -1,28 +1,22 @@
 type t = {
   id: int,
-  brand: string,
-  price: int,
-  size: string,
-  category: string,
+  name: string,
+  price: float,
 };
 
 let jsonDecodeExn = json =>
   Json.Decode.{
     id: json |> field("id", int),
-    brand: json |> field("brand", string),
-    price: json |> field("price", int),
-    size: json |> field("size", string),
-    category: json |> field("type", string),
+    name: json |> field("name", string),
+    price: json |> field("price", float),
   };
 
 let jsonEncode = (record: t) =>
   Json.Encode.(
     object_([
       ("id", record.id |> int),
-      ("brand", record.brand |> string),
-      ("price", record.price |> int),
-      ("size", record.size |> string),
-      ("type", record.category |> string),
+      ("name", record.name |> string),
+      ("price", record.price |> float),
     ])
   );
 

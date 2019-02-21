@@ -9,10 +9,8 @@ defmodule ReasonShopWeb.ProductsView do
   def render("product.json", %{product: product}) do
     %{
       id: product.id,
-      brand: product.brand,
+      name: product.name,
       price: product.price,
-      size: product.size,
-      type: product.type
     }
   end
 end

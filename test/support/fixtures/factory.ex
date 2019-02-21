@@ -16,10 +16,8 @@ defmodule ReasonShop.Factory do
   @spec product_factory() :: Product.t()
   def product_factory do
     %ReasonShop.Product{
-      brand: "#{Faker.Commerce.product_name_adjective()} #{Faker.Commerce.product_name_material()}",
-      price: Faker.random_between(20, 300),
-      size: Faker.Util.pick(["S", "M", "L", "XL", "XXL", "XXXL"]),
-      type: Faker.Util.pick(["T-Shirt", "Hat", "Jacket", "Pants", "Gloves"])
+      name: Faker.Commerce.product_name(),
+      price: Faker.Commerce.price(),
     }
   end
 

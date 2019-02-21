@@ -17,7 +17,8 @@
     "reason-react",
     "bucklescript-phx",
     "@glennsl/bs-json",
-    "@aantron/repromise"
+    "@aantron/repromise",
+    "bs-css"
   ],
   "refmt": 3,
   "warnings": {

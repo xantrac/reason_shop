@@ -43,3 +43,7 @@ let getOrInit = (myRef: ref(option('a)), init: unit => 'a): 'a =>
     myRef := Some(value);
     value;
   };
+
+let normalizedColor = (hex: string): string => {
+  Js.String.sliceToEnd(~from=1, hex);
+};
