@@ -85,7 +85,10 @@ let make = _children => {
         />
       </div>
       <div className=Styles.productsColumn>
-        <ProductsList products={self.state.products} />
+        <ProductsList
+          products={self.state.products}
+          selectedCustomer={self.state.current_customer}
+        />
       </div>
     </div>;
   },

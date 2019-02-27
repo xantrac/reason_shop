@@ -26,7 +26,8 @@ module Styles = {
 
 let component = ReasonReact.statelessComponent("ProductCard");
 
-let make = (~product: Product.t, _children) => {
+let make =
+    (~product: Product.t, ~selectedCustomer: option(Customer.t), _children) => {
   ...component,
   render: _self => {
     <div className={Styles.product_card(150, randomColor())}>
@@ -39,4 +40,3 @@ let make = (~product: Product.t, _children) => {
     </div>;
   },
 };
-

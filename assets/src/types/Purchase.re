@@ -26,3 +26,9 @@ let jsonEncode = (record: t) =>
 let jsonDecode = Prelude.Json.decode(jsonDecodeExn);
 
 let getId = (purchase: t): int => purchase.id;
+
+ let decode = (decodeFunc, json): option('a) =>
+   switch (decodeFunc(json)) {
+   | record => Some(record)
+   | exception (Json.Decode.DecodeError(error)) => None
+   };
