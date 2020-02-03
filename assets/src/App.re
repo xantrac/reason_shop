@@ -73,7 +73,7 @@ let make = _children => {
   },
   reducer,
   didMount: self => {
-    ShopChannel.onJoin() |> Repromise.wait(joinEventHandler(self));
+    ShopChannel.onJoin()->Promise.get(joinEventHandler(self));
   },
   render: self => {
     <div className=Styles.mainContainer>
