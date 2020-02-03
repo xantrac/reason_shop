@@ -34,8 +34,8 @@ module CreateChannel = (WS: WebSocketInterface) => {
   let sendPush = (event: string, payload: Js.t('a)): WS.Push.t =>
     WS.push(event, payload, getChannel());
 
-  let onJoin = (): Repromise.t(Belt.Result.t(InitialState.t, string)) => {
-    let (promise, resolve_promise) = Repromise.make();
+  let onJoin = (): Promise.t(Belt.Result.t(InitialState.t, string)) => {
+    let (promise, resolve_promise) = Promise.pending();
 
     getJoinEvent()
     |> WS.putReceive("ok", response =>
